@@ -38,6 +38,8 @@ func (hc *HuaweiComputerBuilder) setCpuModel(m CPU_MODEL) {
 }
 
 // 设置 GPU型号
+// 设置配置的时候要判断，如果客户端已经配置了，那么跳过
+// 这块是因为 director 会在最后编译的时候统一整体执行一遍，防止客户端漏掉配置，走默认配置
 func (hc *HuaweiComputerBuilder) setGpuModel(m GPU_MODEL) {
 	// demo
 	if hc.c.gpuModel != "" {
@@ -53,6 +55,8 @@ func (hc *HuaweiComputerBuilder) setGpuModel(m GPU_MODEL) {
 }
 
 // 设置内存大小
+// 设置配置的时候要判断，如果客户端已经配置了，那么跳过
+// 这块是因为 director 会在最后编译的时候统一整体执行一遍，防止客户端漏掉配置，走默认配置
 func (hc *HuaweiComputerBuilder) setMemorySize(s MEM_SIZE) {
 	// demo
 	if hc.c.memorySize != "" {
@@ -68,6 +72,8 @@ func (hc *HuaweiComputerBuilder) setMemorySize(s MEM_SIZE) {
 }
 
 // 设置 磁盘大小
+// 设置配置的时候要判断，如果客户端已经配置了，那么跳过
+// 这块是因为 director 会在最后编译的时候统一整体执行一遍，防止客户端漏掉配置，走默认配置
 func (hc *HuaweiComputerBuilder) setDiskSize(s DISK_SIZE) {
 	// demo
 	if hc.c.diskSize != "" {
@@ -82,6 +88,7 @@ func (hc *HuaweiComputerBuilder) setDiskSize(s DISK_SIZE) {
 	}
 }
 
+// 设置优惠折扣，这块是内部逻辑，不需要外部调用方定义，而且不同产品策略不一样
 func (hc *HuaweiComputerBuilder) setDiscount() {
 	// 华为机器不打折，国产赞。 这块就是和 mac 差异化的地方
 	hc.c.discount = 1

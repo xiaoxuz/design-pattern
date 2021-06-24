@@ -11,12 +11,14 @@ type MacComputerBuilder struct {
 	c *Computer
 }
 
+// 实力化一个 Mac 电脑报价
 func NewMacComputerBuilder() builder {
 	return &MacComputerBuilder{
 		c: &Computer{name: "mac"},
 	}
 }
 
+// 返回*Computer
 func (mc *MacComputerBuilder) getComputer() *Computer {
 	return mc.c
 }
@@ -39,6 +41,8 @@ func (mc *MacComputerBuilder) setCpuModel(m CPU_MODEL) {
 }
 
 // 设置 GPU型号
+// 设置配置的时候要判断，如果客户端已经配置了，那么跳过
+// 这块是因为 director 会在最后编译的时候统一整体执行一遍，防止客户端漏掉配置，走默认配置
 func (mc *MacComputerBuilder) setGpuModel(m GPU_MODEL) {
 	// demo
 	if mc.c.gpuModel != "" {
@@ -54,6 +58,8 @@ func (mc *MacComputerBuilder) setGpuModel(m GPU_MODEL) {
 }
 
 // 设置内存大小
+// 设置配置的时候要判断，如果客户端已经配置了，那么跳过
+// 这块是因为 director 会在最后编译的时候统一整体执行一遍，防止客户端漏掉配置，走默认配置
 func (mc *MacComputerBuilder) setMemorySize(s MEM_SIZE) {
 	// demo
 	if mc.c.memorySize != "" {
@@ -69,6 +75,8 @@ func (mc *MacComputerBuilder) setMemorySize(s MEM_SIZE) {
 }
 
 // 设置 磁盘大小
+// 设置配置的时候要判断，如果客户端已经配置了，那么跳过
+// 这块是因为 director 会在最后编译的时候统一整体执行一遍，防止客户端漏掉配置，走默认配置
 func (mc *MacComputerBuilder) setDiskSize(s DISK_SIZE) {
 	// demo
 	if mc.c.diskSize != "" {
@@ -84,6 +92,7 @@ func (mc *MacComputerBuilder) setDiskSize(s DISK_SIZE) {
 }
 
 // 设置折扣
+// 不同产品策略不一样
 // 此操作为内置操作，不需要外部设置
 func (mc *MacComputerBuilder) setDiscount() {
 	// 2021-06-24 00:17:33
