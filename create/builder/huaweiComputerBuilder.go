@@ -1,7 +1,5 @@
 package builder
 
-import "C"
-
 // 抽象的产品生成器
 // 可以理解为computer 这个产品中某一类型产品的生成器
 // 抽象生成器即包含了产品(computer)的所有配置，也继承了 builder 公共生成器的所有生成步骤
